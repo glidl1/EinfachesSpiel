@@ -69,6 +69,8 @@ public class GewinnPanel extends JPanel {
         Font kleinefeldFont = new Font("Arial", Font.BOLD, 16);
         ergebnisText.setFont(kleinefeldFont);
         punkteText.setFont(kleinefeldFont);
+        ergebnisText.setOpaque(true);
+        punkteText.setOpaque(true);
     }
 
     /**
@@ -85,6 +87,13 @@ public class GewinnPanel extends JPanel {
      */
     public void setRundenErgebnis(int zahl) {
         ergebnisText.setText(String.valueOf(zahl));
+        if (zahl > 0) {
+            ergebnisText.setBackground(Color.GREEN);
+            punkteText.setBackground(Color.GREEN);
+        } else {
+            ergebnisText.setBackground(Color.RED);
+            punkteText.setBackground(Color.RED);
+        }
     }
 
     /**
@@ -125,7 +134,9 @@ public class GewinnPanel extends JPanel {
     public void resetRunde() {
         ergebnisText.setText("Tippe eine Zahl von 1 bis 9");
         spielerEingabe.setText("");
-        computerEingabe.setText((""));
+        computerEingabe.setText("");
+        ergebnisText.setBackground(Color.WHITE);
+        punkteText.setBackground(Color.WHITE);
     }
 
 }
