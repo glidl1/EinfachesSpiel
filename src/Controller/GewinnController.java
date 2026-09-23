@@ -7,6 +7,11 @@ import View.GewinnPanel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Verbindet die GUI mit dem GewinnModel
+ * @author Gustav Lidl
+ * @version  23-09-2026
+ */
 public class GewinnController implements ActionListener {
     private GewinnModel model;
     private GewinnPanel panel;
@@ -16,6 +21,10 @@ public class GewinnController implements ActionListener {
         GewinnFrame gf = new GewinnFrame(panel);
     }
 
+    /**
+     * Liest die Eingabe über einen Action Listener, berechnet die Werte für den Computer und gibt sie im Label aus
+     * @param e das Action Event welches vom User ausgelöst wird
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("EIN")) {

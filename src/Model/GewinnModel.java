@@ -42,12 +42,13 @@ public class GewinnModel {
         }
         this.spielerZahl = spielerZahl;
         if(spielerZahl == computerZahl) {
-            gesamtPunkte += 20;
+            rundenErgebnis = 20;
         } else if(spielerZahl + 1 == computerZahl || spielerZahl - 1 == computerZahl) {
-            gesamtPunkte += 5;
+            rundenErgebnis = 5;
         } else {
-            gesamtPunkte -= 10;
+            rundenErgebnis = -10;
         }
+        gesamtPunkte += rundenErgebnis;
     }
 
     /**

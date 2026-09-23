@@ -5,6 +5,11 @@ import Controller.GewinnController;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Erstellt eine GUI für das einfache Spiel
+ * @author Gustav Lidl
+ * @version 21.09.2026
+ */
 public class GewinnPanel extends JPanel {
     private JButton nochmalButton;
     private JLabel ergebnisText, punkteText;
@@ -15,15 +20,18 @@ public class GewinnPanel extends JPanel {
         this.controller = controller;
         this.setLayout(new BorderLayout());
         JPanel statusTexte = new JPanel();
+        /*
+        Erstellt Alle Labels für die Top Leise und anzeige und fügt diese Zum BorderLayout hinzu
+         */
         statusTexte.setLayout(new GridLayout(3, 2 , 10, 0));
-        JLabel rErgebnis = new JLabel("Rundenergebnis:");
-        JLabel gPunkte = new JLabel(("Gesamtpunkte:"));
+        JLabel rErgebnis = new JLabel("Rundenergebnis:", SwingConstants.CENTER);
+        JLabel gPunkte = new JLabel("Gesamtpunkte:", SwingConstants.CENTER);
         ergebnisText = new JLabel("Tippe eine Zahl von 1 bis 9", SwingConstants.CENTER);
         ergebnisText.setEnabled(false);
         punkteText = new JLabel("30", SwingConstants.CENTER);
         punkteText.setEnabled(false);
-        JLabel dZahl = new JLabel("Deine Zahl:");
-        JLabel cZahl = new JLabel("Computer:");
+        JLabel dZahl = new JLabel("Deine Zahl:", SwingConstants.CENTER);
+        JLabel cZahl = new JLabel("Computer:", SwingConstants.CENTER);
         statusTexte.add(rErgebnis);
         statusTexte.add(gPunkte);
         statusTexte.add(ergebnisText);
@@ -31,6 +39,10 @@ public class GewinnPanel extends JPanel {
         statusTexte.add(dZahl);
         statusTexte.add(cZahl);
         add(statusTexte, BorderLayout.PAGE_START);
+        /*
+        Erstellt alle Text Fields im eingabebereich, fügt einen Action Command und den ActionListener hinzu und stellt die Textgröße
+        auf 40 und die Schriftart auf fett
+         */
         JPanel eingabeBereich = new JPanel();
         eingabeBereich.setLayout(new GridLayout(1, 2, 20, 10));
         spielerEingabe = new JTextField();
@@ -58,24 +70,58 @@ public class GewinnPanel extends JPanel {
         ergebnisText.setFont(kleinefeldFont);
         punkteText.setFont(kleinefeldFont);
     }
+
+    /**
+     * Setzt die Zahl im Label auf die Random Zahl des Computers
+     * @param computerZahl die Zahl die im Label angezeigt wird
+     */
     public void setComputerZahl(int computerZahl) {
         computerEingabe.setText(String.valueOf(computerZahl));
     }
+
+    /**
+     * Gibt an wie viele Punkte man verloren oder bekommen hat
+     * @param zahl die anzahl der Punkte die Verloren oder Gewonnen wurden
+     */
     public void setRundenErgebnis(int zahl) {
         ergebnisText.setText(String.valueOf(zahl));
     }
+
+    /**
+     * Gibt die Anzahl der Gesamtpunkte im Label an
+     * @param zahl die Anzahl der Punkte
+     */
     public void setGesamtpunkte(int zahl) {
         punkteText.setText(String.valueOf(zahl));
     }
+
+    /**
+     * Liest die eingabe im Textfield aus
+     * @return die Eingabe als String
+     */
     public int getEingabe() {
         return Integer.parseInt(spielerEingabe.getText());
     }
+
+    /**
+     * Gibt einen Fehler bei einer Falshcen Eingabe aus
+     * @param error der Fehler als String
+     */
     public void showError(String error) {
         ergebnisText.setText(error);
     }
+
+    /**
+     * Gibt Verloren oder Gewonnen aus je nachdem die Punkte über 0 oder unter 100 sind
+     * @param text Verloren oder Gewonnen
+     */
     public void setStatus(String text) {
         ergebnisText.setText(text);
     }
+
+    /**
+     * Setzt die Eingabefelder für die nächste Eingabe zurück
+     */
     public void resetRunde() {
         ergebnisText.setText("Tippe eine Zahl von 1 bis 9");
         spielerEingabe.setText("");

@@ -2,6 +2,11 @@ package View;
 
 import javax.swing.*;
 
+/**
+ * Erstellt ein Frame indem Das GewinnPanel angezeigt wird
+ * @author Gustav Lidl
+ * @version 23.09.2026
+ */
 public class GewinnFrame extends JFrame {
 
     public GewinnFrame(JPanel p) {
