@@ -21,7 +21,7 @@ public class GewinnPanel extends JPanel {
         this.setLayout(new BorderLayout());
         JPanel statusTexte = new JPanel();
         /*
-        Erstellt Alle Labels für die Top Leise und anzeige und fügt diese Zum BorderLayout hinzu
+        Erstellt Alle Labels für die Top Leiste und anzeige und fügt diese Zum BorderLayout hinzu
          */
         statusTexte.setLayout(new GridLayout(3, 2 , 10, 0));
         JLabel rErgebnis = new JLabel("Rundenergebnis:", SwingConstants.CENTER);
