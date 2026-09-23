@@ -21,7 +21,7 @@ public class GewinnController implements ActionListener {
         if(e.getActionCommand().equals("EIN")) {
             int eingabe;
             try {
-                eingabe = Integer.parseInt(panel.getEingabe().trim());
+                eingabe = (panel.getEingabe());
             } catch (NumberFormatException exc) {
                 panel.showError("Bitte Gib eine Zahl ein");
                 return;
@@ -34,9 +34,7 @@ public class GewinnController implements ActionListener {
             model.berechneRunde(eingabe);
             panel.setComputerZahl(model.getComputerZahl());
             panel.setRundenErgebnis(model.getRundenErgebnis());
-            panel.setGesamtPunkte(model.getGesamtPunkte());
-            panel.setEingabeAktiviert(false);
-            panel.setNochEinmalAktiviert(true);
+            panel.setGesamtpunkte(model.getGesamtPunkte());
 
             if(model.hatGewonnen()) {
                 panel.setStatus("Gewonnen");
@@ -46,8 +44,6 @@ public class GewinnController implements ActionListener {
         }
         if(e.getActionCommand().equals("Nochmal")) {
             panel.resetRunde();
-            panel.setNochEinmalAktiviert(false);
-            panel.setEingabeAktiviert(true);
         }
     }
     public static void main(String[] args) {

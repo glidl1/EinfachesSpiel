@@ -18,6 +18,9 @@ public class GewinnModel {
     public int getSpielerZahl() {
         return spielerZahl;
     }
+    public int getRundenErgebnis() {
+        return this.rundenErgebnis;
+    }
 
     public int getGesamtPunkte() {
         return gesamtPunkte;
