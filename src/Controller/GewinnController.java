@@ -1,0 +1,57 @@
+package Controller;
+
+import Model.GewinnModel;
+import View.GewinnFrame;
+import View.GewinnPanel;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class GewinnController implements ActionListener {
+    private GewinnModel model;
+    private GewinnPanel panel;
+    public GewinnController() {
+        this.model = new GewinnModel();
+        this.panel = new GewinnPanel(this);
+        GewinnFrame gf = new GewinnFrame(panel);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("EIN")) {
+            int eingabe;
+            try {
+                eingabe = Integer.parseInt(panel.getEingabe().trim());
+            } catch (NumberFormatException exc) {
+                panel.showError("Bitte Gib eine Zahl ein");
+                return;
+            }
+            if(eingabe < 0 || eingabe > 9) {
+                panel.showError("Die Zahl muss zwishen 0 und 9 sein");
+                return;
+            }
+            model.berechneComputerZahl();
+            model.berechneRunde(eingabe);
+            panel.setComputerZahl(model.getComputerZahl());
+            panel.setRundenErgebnis(model.getRundenErgebnis());
+            panel.setGesamtPunkte(model.getGesamtPunkte());
+            panel.setEingabeAktiviert(false);
+            panel.setNochEinmalAktiviert(true);
+
+            if(model.hatGewonnen()) {
+                panel.setStatus("Gewonnen");
+            } else if(model.hatVerloren()) {
+                panel.setStatus("Verloren");
+            }
+        }
+        if(e.getActionCommand().equals("Nochmal")) {
+            panel.resetRunde();
+            panel.setNochEinmalAktiviert(false);
+            panel.setEingabeAktiviert(true);
+        }
+    }
+    public static void main(String[] args) {
+        new GewinnController();
+    }
+}
+
