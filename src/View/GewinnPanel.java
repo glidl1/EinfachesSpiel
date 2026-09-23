@@ -54,7 +54,7 @@ public class GewinnPanel extends JPanel {
         eingabeBereich.add(computerEingabe);
         add(eingabeBereich, BorderLayout.CENTER);
         nochmalButton = new JButton("Noch einmal");
-        nochmalButton.setEnabled(true);
+        nochmalButton.setEnabled(false);
         nochmalButton.addActionListener(controller);
         nochmalButton.setActionCommand("Nochmal");
         nochmalButton.setPreferredSize(new Dimension(120, 30));
@@ -85,6 +85,8 @@ public class GewinnPanel extends JPanel {
      */
     public void setRundenErgebnis(int zahl) {
         ergebnisText.setText(String.valueOf(zahl));
+        spielerEingabe.setEnabled(false);
+        nochmalButton.setEnabled(true);
     }
 
     /**
@@ -125,7 +127,9 @@ public class GewinnPanel extends JPanel {
     public void resetRunde() {
         ergebnisText.setText("Tippe eine Zahl von 1 bis 9");
         spielerEingabe.setText("");
-        computerEingabe.setText((""));
+        computerEingabe.setText("");
+        spielerEingabe.setEnabled(true);
+        nochmalButton.setEnabled(false);
     }
 
 }
